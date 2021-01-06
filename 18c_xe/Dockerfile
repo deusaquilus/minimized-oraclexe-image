@@ -17,6 +17,13 @@ WORKDIR ${ORACLE_HOME}
 ################################################################################################################
 COPY createUserAndTS.sh $ORACLE_HOME
 COPY health_check.sh $ORACLE_HOME
+
+# Need to chmod as root
+USER root
+RUN chmod +x createUserAndTS.sh $ORACLE_HOME
+RUN chmod +x health_check.sh $ORACLE_HOME
+
+USER oracle
 RUN mkdir -p bin
 COPY --from=oracle/database:18.4.0-xe --chown=oracle:oinstall\
   ${ORACLE_HOME}/bin/sqlplus\

@@ -1,0 +1,10 @@
+version: '2.2'
+
+services:
+  18c:
+    image: diemobiliar/oracle:18c_xe
+    name: 18c
+    environment:
+      - SGA_TARGET=512M
+    volumes:
+      - ./oracle_setup:/opt/oracle/scripts/startup
