@@ -3,7 +3,7 @@
 	CONNECTION_AVAILABLE=false
 
 	echo "Trying to connect to XE 18C Database with sqlplus."
-        $ORACLE_HOME/bin/sqlplus -S aoo_tests/AOO_TESTS@//localhost:1521/XE <<EOF
+        $ORACLE_HOME/bin/sqlplus -S quill_test/QuillRocks!@//localhost:1521/XE <<EOF
         
 
 

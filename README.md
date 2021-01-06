@@ -1,3 +1,14 @@
+# Quill Testing Oracle Build Image
+
+This is a fork of minimized-oraclexe-image by diemobilar:
+https://github.com/diemobiliar/minimized-oraclexe-image
+
+It is modified to create an image to be used specifically for testing Oracle
+against the Quill library:
+https://github.com/getquill/quill
+
+Many thanks to Alain Fuhrer and Andreas Wyssenbach who created the original image.
+
 # minimized-oraclexe-image
 
 This project contains a **Minimized Oracle 18.4.0 XE** docker image intended 
@@ -26,7 +37,7 @@ Then use the Dockerfile from this project to build the minimized image:
 ```shell script
 $ git clone https://github.com/diemobiliar/minimized-oraclexe-image.git
 $ cd minimized-oraclexe-image/18c_xe
-$ docker build . -t diemobiliar/oracle:18c_xe
+$ docker build . -t quillbuilduser/oracle-18-xe-micro
 
 $ docker image ls
 REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
@@ -34,9 +45,13 @@ diemobiliar/oracle   18c_xe              df4317e0b89d        21 seconds ago     
 oracle/database      18.4.0-xe           79e03b2304a7        2 hours ago         5.89GB
 ```
 
-The ```examples``` directory contains an example on how to use this image using [testcontainers](https://www.testcontainers.org/).
-
-The test should usually run within 5 seconds (starting up the minimized oracle image and apply one flyway migration).
+Note that if you build with the `--squash` option the container will be even smaller:
+```
+$ docker build --squash . -t quillbuilduser/oracle-18-xe-micro
+REPOSITORY                             TAG       IMAGE ID       CREATED             SIZE
+quillbuilduser/oracle-18-xe-micro-sq   latest    fd47805b460b   29 minutes ago      2.29GB
+quillbuilduser/oracle-18-xe-micro      latest    35feee4afcf5   40 minutes ago      3.87GB
+```
 
 
 ## Usage and Startup Options
